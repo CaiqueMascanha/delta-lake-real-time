@@ -1,0 +1,115 @@
+name: real-time
+services:
+  kafka:
+    image: bitnamilegacy/kafka:latest
+    container_name: kafka
+    ports:
+      - '9094:9094'
+    volumes:
+      - ./kafka:/bitnami/kafka
+    environment:
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=broker,controller
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,EXTERNAL://localhost:9094
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:16
+    container_name: postgres-db
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=cars
+    command: >
+      postgres -c wal_level=logical
+               -c max_wal_senders=10
+               -c max_replication_slots=10
+               -c shared_buffers=256MB
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    networks: [app-network]
+
+  kafka-connect:
+    image: debezium/connect:2.7.3.Final
+    container_name: kafka-connect
+    restart: unless-stopped
+    ports:
+      - '8083:8083' # REST API do Connect
+    environment:
+      - BOOTSTRAP_SERVERS=kafka:9092
+      - GROUP_ID=1
+      - CONFIG_STORAGE_TOPIC=connect_configs
+      - OFFSET_STORAGE_TOPIC=connect_offsets
+      - STATUS_STORAGE_TOPIC=connect_status
+      # Converters em JSON "plain" (sem schema) — fácil de consumir no Spark
+      - CONNECT_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - CONNECT_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE=false
+      - CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE=false
+      # (opcional) offset.flush.interval.ms
+      - CONNECT_OFFSET_FLUSH_INTERVAL_MS=10000
+    depends_on:
+      - kafka
+      - postgres
+    networks: [app-network]
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui-web
+    restart: unless-stopped
+    ports:
+      - '9000:8080'
+    environment:
+      - KAFKA_CLUSTERS_0_NAME=meu-cluster-local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9092
+    depends_on:
+      - kafka
+    networks: [app-network]
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+      - '9003:9000' # Porta da API (para o Spark e Spring se conectarem)
+      - '9002:9002' # Porta do Console (para você acessar a UI no navegador)
+
+    command: server /data --address ":9000" --console-address ":9002"
+
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+
+    volumes:
+      - ./data/data-lake:/data
+    networks:
+      - app-network
+
+  pyspark-jupyter:
+    build:
+      context: ./pyspark-jupyter
+    container_name: pyspark-jupyter
+    user: root
+    networks:
+      - app-network
+    ports:
+      - '8888:8888'
+      - '4040:4040'
+    volumes:
+      - ./data/notebooks:/home/jovyan/work
+    environment:
+      JUPYTER_ENABLE_LAB: 'yes'
+      GRANT_SUDO: 'yes'
+
+networks:
+  app-network:
+    name: app-network
+    driver: bridge
