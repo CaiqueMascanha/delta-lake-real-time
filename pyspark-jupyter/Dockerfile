@@ -86,7 +86,7 @@ RUN mkdir -p /usr/local/spark/conf && \
 > /usr/local/spark/conf/spark-defaults.conf
 
 # libs Python úteis
-RUN pip install --no-cache-dir kafka-python boto3 minio pyspark==3.5.0
+RUN pip install --no-cache-dir kafka-python boto3 minio pyspark==3.5.0 delta-spark==3.1.0
 
 # volta para o usuário padrão do Jupyter stack
 USER ${NB_UID}

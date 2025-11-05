@@ -58,12 +58,71 @@ car_catalog = [
     {"marca": "Hyundai", "modelo": "Creta Attitude 1.6", "ano_modelo": 2020, "preco_base": 83000.00, "tipo": "Seminovo"},
     
     # Jeep
-    {"marca": "Jeep", "modelo": "Renegade 1.3 Turbo", "ano_modelo": 2025, "preco_base": 118500.00, "tipo": "Novo"},
-    {"marca": "Jeep", "modelo": "Compass Sport T270", "ano_modelo": 2025, "preco_base": 190000.00, "tipo": "Novo"},
-    
+    {"marca": "Jeep", "modelo": "Compass Limited T270", "ano_modelo": 2025, "preco_base": 205000.00, "tipo": "Novo"},
+    {"marca": "Jeep", "modelo": "Commander Overland T270", "ano_modelo": 2025, "preco_base": 255000.00, "tipo": "Novo"},
+    {"marca": "Jeep", "modelo": "Renegade Longitude 1.3T", "ano_modelo": 2021, "preco_base": 105000.00, "tipo": "Seminovo"},
+
     # Ford (Seminovos)
     {"marca": "Ford", "modelo": "Ka SE 1.0", "ano_modelo": 2020, "preco_base": 52000.00, "tipo": "Seminovo"},
     {"marca": "Ford", "modelo": "Ranger XLS 2.2 Diesel 4x4", "ano_modelo": 2019, "preco_base": 145000.00, "tipo": "Seminovo"},
+    {"marca": "Ford", "modelo": "Bronco Sport Wildtrak", "ano_modelo": 2025, "preco_base": 250000.00, "tipo": "Novo"},
+    {"marca": "Ford", "modelo": "Maverick Lariat FX4 Hybrid", "ano_modelo": 2025, "preco_base": 215000.00, "tipo": "Novo"},
+    {"marca": "Ford", "modelo": "Fiesta 1.6 SE", "ano_modelo": 2017, "preco_base": 45000.00, "tipo": "Usado"},
+    {"marca": "Ford", "modelo": "Ecosport Freestyle 1.5", "ano_modelo": 2020, "preco_base": 79000.00, "tipo": "Seminovo"},
+
+    # Bmw
+    {"marca": "BMW", "modelo": "320i Sport GP 2.0 Turbo", "ano_modelo": 2025, "preco_base": 299000.00, "tipo": "Novo"},
+    {"marca": "BMW", "modelo": "X1 sDrive20i GP", "ano_modelo": 2025, "preco_base": 289900.00, "tipo": "Novo"},
+    {"marca": "BMW", "modelo": "320i Sport GP 2.0 Turbo", "ano_modelo": 2021, "preco_base": 198000.00, "tipo": "Seminovo"},
+
+    # Mercedez
+    {"marca": "Mercedes-Benz", "modelo": "GLA 200 Advance", "ano_modelo": 2025, "preco_base": 279000.00, "tipo": "Novo"},
+    {"marca": "Mercedes-Benz", "modelo": "C200 Avantgarde", "ano_modelo": 2025, "preco_base": 335000.00, "tipo": "Novo"},
+    {"marca": "Mercedes-Benz", "modelo": "C200 Avantgarde", "ano_modelo": 2020, "preco_base": 190000.00, "tipo": "Seminovo"},
+
+    # Audi
+    {"marca": "Audi", "modelo": "A3 Sedan Performance 2.0", "ano_modelo": 2025, "preco_base": 245000.00, "tipo": "Novo"},
+    {"marca": "Audi", "modelo": "Q3 Prestige 1.4T", "ano_modelo": 2025, "preco_base": 265000.00, "tipo": "Novo"},
+    {"marca": "Audi", "modelo": "A3 Sedan Prestige 1.4T", "ano_modelo": 2021, "preco_base": 160000.00, "tipo": "Seminovo"},
+
+    # Renault
+    {"marca": "Renault", "modelo": "Kwid Zen 1.0", "ano_modelo": 2025, "preco_base": 72000.00, "tipo": "Novo"},
+    {"marca": "Renault", "modelo": "Duster Iconic 1.3 Turbo", "ano_modelo": 2025, "preco_base": 152000.00, "tipo": "Novo"},
+    {"marca": "Renault", "modelo": "Sandero Stepway 1.6", "ano_modelo": 2021, "preco_base": 65000.00, "tipo": "Seminovo"},
+
+    # Peugeot / Citroën
+    {"marca": "Peugeot", "modelo": "208 Active 1.6 AT", "ano_modelo": 2025, "preco_base": 98000.00, "tipo": "Novo"},
+    {"marca": "Peugeot", "modelo": "2008 Style 1.6", "ano_modelo": 2025, "preco_base": 118000.00, "tipo": "Novo"},
+    {"marca": "Citroën", "modelo": "C3 Feel 1.0", "ano_modelo": 2025, "preco_base": 78000.00, "tipo": "Novo"},
+
+    # Volvo
+    {"marca": "Volvo", "modelo": "XC40 Recharge Pure Electric", "ano_modelo": 2025, "preco_base": 279000.00, "tipo": "Novo"},
+    {"marca": "Volvo", "modelo": "C40 Recharge Pure Electric", "ano_modelo": 2024, "preco_base": 265000.00, "tipo": "Seminovo"},
+    {"marca": "Volvo", "modelo": "XC60 T8 Hybrid", "ano_modelo": 2022, "preco_base": 315000.00, "tipo": "Seminovo"},
+
+    # BYD
+    {"marca": "BYD", "modelo": "Dolphin Plus", "ano_modelo": 2025, "preco_base": 155000.00, "tipo": "Novo"},
+    {"marca": "BYD", "modelo": "Dolphin Standard", "ano_modelo": 2024, "preco_base": 124000.00, "tipo": "Seminovo"},
+    {"marca": "BYD", "modelo": "Han EV", "ano_modelo": 2025, "preco_base": 355000.00, "tipo": "Novo"},
+    {"marca": "BYD", "modelo": "Song Plus DM-i", "ano_modelo": 2025, "preco_base": 225000.00, "tipo": "Novo"},
+
+    # Tesla
+    {"marca": "Tesla", "modelo": "Model 3 Long Range", "ano_modelo": 2024, "preco_base": 310000.00, "tipo": "Seminovo"},
+    {"marca": "Tesla", "modelo": "Model Y Performance", "ano_modelo": 2025, "preco_base": 360000.00, "tipo": "Novo"},
+
+    # Nissan
+    {"marca": "Nissan", "modelo": "Kicks Exclusive 1.6 CVT", "ano_modelo": 2025, "preco_base": 144000.00, "tipo": "Novo"},
+    {"marca": "Nissan", "modelo": "Versa Exclusive", "ano_modelo": 2025, "preco_base": 115000.00, "tipo": "Novo"},
+    {"marca": "Nissan", "modelo": "Kicks SL 1.6", "ano_modelo": 2021, "preco_base": 88000.00, "tipo": "Seminovo"},
+
+    # Land Rover
+    {"marca": "Land Rover", "modelo": "Discovery Sport R-Dynamic", "ano_modelo": 2025, "preco_base": 389000.00, "tipo": "Novo"},
+    {"marca": "Land Rover", "modelo": "Range Rover Evoque P250", "ano_modelo": 2024, "preco_base": 350000.00, "tipo": "Seminovo"},
+
+    # Suzuki
+    {"marca": "Suzuki", "modelo": "Jimny Sierra 4Sport", "ano_modelo": 2025, "preco_base": 168000.00, "tipo": "Novo"},
+    {"marca": "Suzuki", "modelo": "Vitara 4Sport", "ano_modelo": 2019, "preco_base": 98000.00, "tipo": "Seminovo"},
+
 ]
 
 # 3. Lista de nomes de concessionárias (Sufixos comuns)
@@ -172,8 +231,8 @@ try:
             
             print(f"Sucesso: Lote de {num_novas_vendas} novos registros inseridos.")
 
-            # 6. Aguarda um tempo aleatório (5 a 20 segundos)
-            intervalo_sleep = random.uniform(5, 20)
+            # 6. Aguarda um tempo aleatório (5 a 120 segundos)
+            intervalo_sleep = random.uniform(5, 120)
             print(f"Aguardando {intervalo_sleep:.2f} segundos...")
             time.sleep(intervalo_sleep)
 
