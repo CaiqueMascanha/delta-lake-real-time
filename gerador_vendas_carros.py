@@ -216,7 +216,7 @@ try:
     while True:
         try:
             # 4. Gera um lote aleatório de 1 a 5 vendas
-            num_novas_vendas = random.randint(1, 5)
+            num_novas_vendas = random.randint(5, 15)
             dados_ficticios = gerar_dados_venda(num_novas_vendas)
             df = pd.DataFrame(dados_ficticios)
 
